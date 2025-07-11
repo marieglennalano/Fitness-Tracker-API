@@ -8,7 +8,6 @@ require('dotenv').config();
 const userRoutes = require('./routes/user');
 const workoutRoutes = require('./routes/workout');
 
-
 // [SECTION] Server setup
 const app = express();
 
