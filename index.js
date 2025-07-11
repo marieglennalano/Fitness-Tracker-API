@@ -29,9 +29,6 @@ mongoose.connect(process.env.MONGODB_STRING)
 
 mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas.'));
 
-// [SECTION] JWT Secret Key Setup
-const JWT_SECRET = "FitnessTrackerAPI"; 
-
 // [SECTION] Backend Routes
 app.use("/users", userRoutes);
 app.use("/workouts", workoutRoutes);
