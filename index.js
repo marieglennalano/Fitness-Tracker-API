@@ -2,10 +2,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
 
 // [SECTION] Routes
 const userRoutes = require('./routes/user');
 const workoutRoutes = require('./routes/workout');
+
 
 // [SECTION] Server setup
 const app = express();
@@ -23,11 +25,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// [SECTION] Database Setup
-const MONGODB_URI = 'mongodb+srv://admin123:admin123@b546.is2c4ug.mongodb.net/FitnessTrackerAPI?retryWrites=true&w=majority&appName=b546';  
-
-
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+//[SECTION] Database Setup
+mongoose.connect(process.env.MONGODB_STRING)
 
 mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas.'));
 
@@ -38,11 +37,13 @@ const JWT_SECRET = "FitnessTrackerAPI";
 app.use("/users", userRoutes);
 app.use("/workouts", workoutRoutes);
 
-// [SECTION] Server Gateway Response
-if (require.main === module) {
-    app.listen(4000, () => {
-        console.log(`API is now online on port 4000`);
-    });
+
+// [SECTION] Server Listener
+if(require.main === module) {
+    app.listen( process.env.PORT || 4000, () => {
+        console.log(`API is now online on port ${ process.env.PORT || 4000 }`);
+    })
 }
+
 
 module.exports = { app, mongoose };
