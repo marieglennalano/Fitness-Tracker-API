@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // Allow all resources
 const corsOptions = {
     //to be updated when we connect this to our client
-    origin: ['http://localhost:3000', 'http://localhost:4000'],
+    origin: ['https://fitness-tracker-api-enez.onrender.com/'],
     credentials: true,
     optionsSuccessStatus: 200
 };
