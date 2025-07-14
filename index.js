@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // Allow all resources
 const corsOptions = {
     //to be updated when we connect this to our client
-    origin: ['https://fitness-tracker-api-enez.onrender.com/'],
+    origin: ['https://fitness-tracker-fs.vercel.app/'],
     credentials: true,
     optionsSuccessStatus: 200
 };
