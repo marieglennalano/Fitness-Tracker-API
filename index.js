@@ -16,10 +16,16 @@ app.use(express.urlencoded({ extended: true }));
 
 // Allow all resources
 const corsOptions = {
-  origin: ['https://fitness-tracker-fs.vercel.app'], // ✅ Correct frontend URL
+  origin: [
+    'http://localhost:3000',               // Local dev
+    'https://fitness-tracker-fs.vercel.app' // Live frontend on Vercel
+  ],
   credentials: true,
   optionsSuccessStatus: 200
 };
+
+app.use(cors(corsOptions));
+
 
 app.use(cors(corsOptions));
 
